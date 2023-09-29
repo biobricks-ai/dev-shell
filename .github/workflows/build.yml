@@ -19,4 +19,4 @@ jobs:
 
       - name: Build
         run: |
-          nix develop -c "exit 0"
+          nix develop -c "bash echo 0"
