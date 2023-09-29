@@ -1,0 +1,5 @@
+.*
+!.editorconfig
+!.envrc
+!.github
+!.gitignore
