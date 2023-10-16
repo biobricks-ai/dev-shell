@@ -2,8 +2,8 @@
   description = "Development shell for biobricks";
 
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
-    flake-utils.url = "https://flakehub.com/f/numtide/flake-utils/*.tar.gz";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    flake-utils.url = "github:numtide/flake-utils";
     biobricks-R = {
       url = "github:biobricks-ai/biobricks-R";
       inputs.flake-utils.follows = "flake-utils";
