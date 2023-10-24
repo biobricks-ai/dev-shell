@@ -46,6 +46,8 @@
             hdt-cpp.packages.${system}.default
             jdk
             morph-kgc.packages.${system}.default
+            (lib.hiPrio pkgs.parallel-full) # prefer GNU Parallel over `moreutils`
+            moreutils
           ];
           env = { DUCKDB_HOME = "${duckdb}/lib"; };
         };
