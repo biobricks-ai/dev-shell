@@ -26,9 +26,9 @@
       with import nixpkgs { inherit system; };
       let
         # tmducken requires duckdb 0.8.1 or later, and nixos-23.05 only had 0.7
-        duckdb-version = "1.0.0";
-        duckdb-rev     = "1f98600c2cf8722a6d2f2d805bb4af5e701319fc";
-        duckdb-hash    = "sha256-bzFxWv8+Ac8vZLd2OWJyu4T0/0dc7wykdOORMpx92Ic=";
+        duckdb-version = "1.2.2";
+        duckdb-rev     = "7c039464e452ddc3330e2691d3fa6d305521d09b";
+        duckdb-hash    = "sha256-cHQcEA9Gpza/edEVyXUYiINC/Q2b3bf+zEQbl/Otfr4=";
         duckdb = (pkgs.duckdb.overrideAttrs (oldAttrs: rec {
           version = duckdb-version;
           src = fetchFromGitHub {
