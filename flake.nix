@@ -27,10 +27,14 @@
         pkgs = import nixpkgs { inherit system; };
         # Import the DuckDB package using callPackage
         duckdb = pkgs.callPackage ./pkgs/duckdb/package.nix { };
+        r-duckdb = pkgs.callPackage ./pkgs/r/duckdb/package.nix {
+          rPackages = pkgs.rPackages;
+        };
       in {
         # Export packages for other flakes to use
         packages = {
           duckdb = duckdb;
+          r-duckdb = r-duckdb;
         };
 
         devShells.default = pkgs.mkShell {
