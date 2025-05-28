@@ -1,9 +1,9 @@
 { lib, fetchFromGitHub, duckdb }:
 
 let
-  duckdb-version = "1.2.2";
-  duckdb-rev = "7c039464e452ddc3330e2691d3fa6d305521d09b";
-  duckdb-hash = "sha256-cHQcEA9Gpza/edEVyXUYiINC/Q2b3bf+zEQbl/Otfr4=";
+  duckdb-version = "1.3.0";
+  duckdb-rev = "71c5c07cdd295e9409c0505885033ae9eb6b5ddd";
+  duckdb-hash = "sha256-Io3BKsFxV6Lis917TYKTxJ6+v832A21Zqpq65qQOdXM=";
 in
 duckdb.overrideAttrs (oldAttrs: rec {
   version = duckdb-version;
