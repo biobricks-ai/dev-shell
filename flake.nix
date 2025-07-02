@@ -24,22 +24,25 @@
   outputs = { self, nixpkgs, flake-utils, biobricks-R, hdt-cpp, morph-kgc }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs { inherit system; };
+        # Create custom pkgs with R package overlay
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ (import ./pkgs/r/overlay.nix) ];
+        };
+
         # Import the DuckDB package using callPackage
         duckdb = pkgs.callPackage ./pkgs/duckdb/package.nix { };
-        r-duckdb = pkgs.callPackage ./pkgs/r/duckdb/package.nix {
-          rPackages = pkgs.rPackages;
-        };
       in {
         # Export packages for other flakes to use
         packages = {
           duckdb = duckdb;
-          r-duckdb = r-duckdb;
+          r-duckdb = pkgs.rPackages.duckdb;
         };
 
         devShells.default = pkgs.mkShell {
           buildInputs = [
             biobricks-R.packages.${system}.rEnv
+            pkgs.rPackages.duckdb
             pkgs.clojure
             pkgs.csv2parquet
             duckdb
