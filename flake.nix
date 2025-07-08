@@ -52,7 +52,11 @@
             (pkgs.lib.hiPrio pkgs.parallel-full) # prefer GNU Parallel over `moreutils`
             pkgs.moreutils
           ];
-          env = { DUCKDB_HOME = "${duckdb}/lib"; };
+          env = {
+            DUCKDB_HOME = "${duckdb}/lib";
+            LC_ALL = "C";
+            LANG = "C";
+          };
         };
       });
 }
